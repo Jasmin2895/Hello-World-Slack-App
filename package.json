@@ -1,0 +1,27 @@
+{
+  "name": "hello-world-slack-app",
+  "version": "1.0.0",
+  "description": "Creating simple hello world slack app using bolt.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jasmin2895/Hello-World-Slack-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jasmin2895/Hello-World-Slack-App/issues"
+  },
+  "homepage": "https://github.com/Jasmin2895/Hello-World-Slack-App#readme",
+  "dependencies": {
+    "@slack/bolt": "^3.9.0",
+    "dotenv": "^14.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
