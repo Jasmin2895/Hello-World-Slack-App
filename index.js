@@ -9,19 +9,13 @@ const app = new App({
 })
 
 app.event('app_home_opened', async ({event, say})=> {
-    // Look up the user from the DB.
-    let user = store.getUser()
+    // Look up the user from the DB
 
-    if(!user){
-        user = {
-            user: event.user,
-            channel: event.channel
-        };
-
-        store.addUser(user);
+    if(event?.user){
 
         await say(`Hello world, and welcome <@${event.user}>!`)
     }else {
+        
         await say('Hi again!')
     }
 });
