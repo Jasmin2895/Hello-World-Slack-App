@@ -4,7 +4,7 @@ const {App} = require('@slack/bolt');
 
 const app = new App({
     token: process.env.SLACK_BOT_TOKEN,
-    signingSecret: process.env.SLACK_SIGINING_SECRET
+    signingSecret: process.env.SLACK_SIGINING_SECRET,
 })
 
 // Listen to the app_home_opened Events API event to hear when a user opens your app from the sidebar
@@ -30,7 +30,7 @@ app.event("app_home_opened", async ({ payload, client }) => {
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Learn how home tabs can be more useful and interactive <https://api.slack.com/surfaces/tabs/using|*in the documentation*>."
+                "text": "This is a Hello World App for Slack. :wave:"
               }
             },
             {
@@ -48,12 +48,27 @@ app.event("app_home_opened", async ({ payload, client }) => {
           ]
         }
       });
-  
-      console.log(result);
+
     }
     catch (error) {
       console.error(error);
     }
+});
+
+// event to say hi to a new member of the channel.
+
+app.message('hello', async ({ message, client, logger }) => {
+  try {
+    // Call chat.scheduleMessage with the built-in client
+    const result = await client.chat.postMessage({
+      channel: message.channel,
+      text: `Welcome to the team, <@${message.user}>! 🎉`
+    });
+    logger.info(result);
+  }
+  catch (error) {
+    logger.error(error);
+  }
 });
 
 
